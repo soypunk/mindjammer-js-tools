@@ -11,3 +11,21 @@
     <dt>Civilisation Type</dt>
     <dd id="civilisationType"></dd>
 </dl>
+<script>
+function ready(fn) {
+  if (document.readyState != 'loading'){
+    fn()
+  } else {
+    document.addEventListener('DOMContentLoaded', fn)
+  }
+}
+
+ready(function(){
+    const MJIW = new InhabitedWorld()
+    var $planetaryType = document.getElementById("planetaryType")
+    var $civilisationType = document.getElementById("civilisationType")
+    
+    $planetaryType.textContent = MJIW.planetaryType.label
+});
+
+</script>
