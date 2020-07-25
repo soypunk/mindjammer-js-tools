@@ -5,7 +5,14 @@
 <link rel="stylesheet" href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css"/>
 <script type="text/javascript" src="./mindjammer-tools.js"></script>
 <h1>Mindjammer: Inhabited World Generator</h1>
-<dl>
+
+<form id="worldStatusSelector">
+  <select id="worldStatusSelect">
+  </select>
+  <button id="worldStatusButton">Generate</button>
+</form>
+
+<dl id="inhabitedWorld" class="dn">
     <dt>Planetary Type</dt>
     <dd id="planetaryType"></dd>
     <dt>Civilisation Type</dt>
@@ -21,11 +28,34 @@ function ready(fn) {
 }
 
 ready(function(){
-    const MJIW = new InhabitedWorld()
+    
+    // form elements
+    var $worldStatusSelect = document.getElementById("worldStatusSelect")
+    var $worldStatusButton = document.getElementById("worldStatusButton")        
+
+    // world display elements
+    var $inhabitedWorld = document.getElementById("inhabitedWorld")        
     var $planetaryType = document.getElementById("planetaryType")
     var $civilisationType = document.getElementById("civilisationType")
-    
-    $planetaryType.textContent = MJIW.planetaryType.label
+
+    // populate world status select options
+    var worldStatusesFragment = document.createDocumentFragment()
+    WORLD_STATUSES.forEach(function(worldStatus, index) {
+        var opt = document.createElement('option')
+        opt.innerHTML = worldStatus
+        opt.value = worldStatus
+        worldStatusesFragment.appendChild(opt)
+    });
+    worldStatusSelect.appendChild(worldStatusesFragment)    
+
+    $worldStatusButton.addEventListener("click", function(e) {      
+      e.preventDefault()
+      var selectedWorldStatus = $worldStatusSelect.options[$worldStatusSelect.selectedIndex].value
+      const MJIW = new InhabitedWorld(selectedWorldStatus)
+      $planetaryType.textContent = MJIW.planetaryType.label
+      $civilisationType.textContent = MJIW.civilisationType.label
+      $inhabitedWorld.classList.remove("dn")
+    })
 });
 
 </script>
