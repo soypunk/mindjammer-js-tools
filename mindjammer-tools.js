@@ -38,39 +38,39 @@ class InhabitedWorld {
    
    generatePlanetaryType() {
       var table = {
-         -4: {
+         "-4": {
             "label": "Non-Garden World*",
             "modifier": -4
          },
-         -3: {
+         "-3": {
             "label": "Marginal Garden World",
             "modifier": -2
          },
-         -2: {
+         "-2": {
             "label": "Marginal Garden World",
             "modifier": -2
          },
-         -1: {
+         "-1": {
             "label": "Inferior Garden World",
             "modifier": 0
          },
-         0: {
+         "0": {
             "label": "Inferior Garden World",
             "modifier": 0
          },
-         1: {
+         "1": {
             "label": "Inferior Garden World",
             "modifier": 0
          },
-         2: {
+         "2": {
             "label": "Standard Garden World",
             "modifier": 2
          },
-         3: {
+         "3": {
             "label": "Standard Garden World",
             "modifier": 2
          },
-         4: {
+         "4": {
             "label": "Superior Garden World",
             "modifier": 4
          }
